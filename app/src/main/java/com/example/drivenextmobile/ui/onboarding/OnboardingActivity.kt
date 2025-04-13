@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.drivenextmobile.R
+import com.example.drivenextmobile.app.manager.InternetCheckManager
 import com.example.drivenextmobile.databinding.OnboardingScreenBinding
 import com.example.drivenextmobile.ui.splash.SplashActivity
 import kotlinx.coroutines.launch
@@ -27,10 +28,17 @@ class OnboardingActivity : AppCompatActivity() {
 
     private fun setupClickListeners() {
         binding.nextButton.setOnClickListener {
-            viewModel.onEvent(OnboardingContract.Event.NextButtonClicked)
+            InternetCheckManager.checkWithActivity(
+                context = this,
+                onSuccess = { viewModel.onEvent(OnboardingContract.Event.NextButtonClicked) }
+            )
         }
+
         binding.topText.setOnClickListener {
-            viewModel.onEvent(OnboardingContract.Event.SkipButtonClicked)
+            InternetCheckManager.checkWithActivity(
+                context = this,
+                onSuccess = { viewModel.onEvent(OnboardingContract.Event.SkipButtonClicked) }
+            )
         }
     }
 

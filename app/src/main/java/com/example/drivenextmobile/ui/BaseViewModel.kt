@@ -23,7 +23,7 @@ abstract class BaseViewModel<Event, State, Effect> : ViewModel() {
         handleEvent(event)
     }
 
-    protected fun setState(reducer: State.() -> State) {
+    protected open fun setState(reducer: State.() -> State) {
         _state.update(reducer)
     }
 

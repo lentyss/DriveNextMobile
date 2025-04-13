@@ -50,7 +50,9 @@
 
         <activity android:name=".ui.registration.RegistrationActivity" />
 
-         <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.MainActivity" />
+
+        <activity android:name=".ui.fragments.NoInternetActivity" />
 
     </application>
 

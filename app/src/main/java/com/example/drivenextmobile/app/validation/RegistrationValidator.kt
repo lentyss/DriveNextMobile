@@ -1,12 +1,11 @@
 package com.example.drivenextmobile.app.validation
 
 import android.net.Uri
-import com.example.drivenextmobile.app.model.User
 import java.util.Calendar
 import java.util.regex.Pattern
 
 /* Валидация регистрации аккаунта
-*  test@test.ru 1111111a
+*  test@test.ru 1111111A
 *  Тест 01.01.2000
 *  0000000000 01.01.2000
 *  пароль: >= 8 символов, минимум 1 цифра 1 буква
@@ -168,81 +167,5 @@ object RegistrationValidator {
         } else {
             ValidationResult.Success
         }
-    }
-
-    data class FullValidationResult(
-        val isValid: Boolean,
-        val emailError: String? = null,
-        val passwordError: String? = null,
-        val confirmPasswordError: String? = null,
-        val agreementError: String? = null,
-        val lastNameError: String? = null,
-        val firstNameError: String? = null,
-        val middleNameError: String? = null,
-        val genderError: String? = null,
-        val birthDateError: String? = null,
-        val licenseError: String? = null,
-        val licenseDateError: String? = null,
-        val driverLicensePhotoError: String? = null,
-        val passportPhotoError: String? = null
-    )
-
-    fun validateAll(
-        email: String,
-        password: String,
-        confirmPassword: String,
-        agreed: Boolean,
-        lastName: String,
-        firstName: String,
-        middleName: String?,
-        gender: String?,
-        birthDate: String,
-        license: String,
-        licenseDate: String,
-        driverLicensePhoto: Uri?,
-        passportPhoto: Uri?
-    ): FullValidationResult {
-        val emailResult = validateEmail(email)
-        val passwordResult = validatePassword(password)
-        val confirmResult = validatePasswordConfirmation(password, confirmPassword)
-        val agreementResult = validateAgreement(agreed)
-        val lastNameResult = validateName(lastName, "Фамилия")
-        val firstNameResult = validateName(firstName, "Имя")
-        val middleNameResult = if (!middleName.isNullOrBlank()) validateName(middleName, "Отчество") else ValidationResult.Success
-        val genderResult = validateGender(gender)
-        val birthDateResult = validateBirthDate(birthDate)
-        val licenseResult = validateDriverLicense(license)
-        val licenseDateResult = validateLicenseIssueDate(licenseDate)
-        val driverLicensePhotoResult = validateDriverLicensePhoto(driverLicensePhoto)
-        val passportPhotoResult = validatePassportPhoto(passportPhoto)
-
-        return FullValidationResult(
-            isValid = emailResult is ValidationResult.Success &&
-                    passwordResult is ValidationResult.Success &&
-                    confirmResult is ValidationResult.Success &&
-                    agreementResult is ValidationResult.Success &&
-                    lastNameResult is ValidationResult.Success &&
-                    firstNameResult is ValidationResult.Success &&
-                    middleNameResult is ValidationResult.Success &&
-                    genderResult is ValidationResult.Success &&
-                    birthDateResult is ValidationResult.Success &&
-                    licenseResult is ValidationResult.Success &&
-                    licenseDateResult is ValidationResult.Success &&
-                    driverLicensePhotoResult is ValidationResult.Success &&
-                    passportPhotoResult is ValidationResult.Success,
-            emailError = (emailResult as? ValidationResult.Error)?.message,
-            passwordError = (passwordResult as? ValidationResult.Error)?.message,
-            confirmPasswordError = (confirmResult as? ValidationResult.Error)?.message,
-            agreementError = (agreementResult as? ValidationResult.Error)?.message,
-            lastNameError = (lastNameResult as? ValidationResult.Error)?.message,
-            firstNameError = (firstNameResult as? ValidationResult.Error)?.message,
-            middleNameError = (middleNameResult as? ValidationResult.Error)?.message,
-            genderError = (genderResult as? ValidationResult.Error)?.message,
-            birthDateError = (birthDateResult as? ValidationResult.Error)?.message,
-            licenseError = (licenseResult as? ValidationResult.Error)?.message,
-            licenseDateError = (licenseDateResult as? ValidationResult.Error)?.message,
-            driverLicensePhotoError = (driverLicensePhotoResult as? ValidationResult.Error)?.message,
-            passportPhotoError = (passportPhotoResult as? ValidationResult.Error)?.message
-        )
     }
 }

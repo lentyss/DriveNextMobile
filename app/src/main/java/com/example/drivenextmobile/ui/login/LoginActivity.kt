@@ -2,15 +2,19 @@ package com.example.drivenextmobile.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.drivenextmobile.R
+import com.example.drivenextmobile.app.manager.InternetCheckManager
 import com.example.drivenextmobile.app.usecase.LoginUseCase
 import com.example.drivenextmobile.app.repository.UserRepositoryImpl
 import com.example.drivenextmobile.app.utils.Supabase
 import com.example.drivenextmobile.app.validation.AuthValidator
 import com.example.drivenextmobile.app.validation.ValidationResult
+import com.example.drivenextmobile.databinding.AlertFragmentBinding
 import com.example.drivenextmobile.databinding.AuthScreenBinding
 import com.example.drivenextmobile.ui.MainActivity
 import com.example.drivenextmobile.ui.registration.RegistrationActivity
@@ -20,6 +24,7 @@ import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: AuthScreenBinding
+    private lateinit var bindingAlert: AlertFragmentBinding
     private val viewModel: LoginViewModel by viewModels {
         LoginViewModelFactory(LoginUseCase(UserRepositoryImpl(Supabase)))
     }
@@ -35,31 +40,42 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupClickListeners() {
         binding.buttonLoginnn.setOnClickListener {
-            val email = binding.emailInnerTextField.text.toString()
-            val password = binding.passwordInnerTextField.text.toString()
+            InternetCheckManager.checkWithActivity(
+                context = this,
+                onSuccess = {
+                    val email = binding.emailInnerTextField.text.toString()
+                    val password = binding.passwordInnerTextField.text.toString()
 
-            val emailValidation = AuthValidator.validateEmail(email)
-            val passwordValidation = AuthValidator.validatePassword(password)
+                    val emailValidation = AuthValidator.validateEmail(email)
+                    val passwordValidation = AuthValidator.validatePassword(password)
 
-            if (emailValidation is ValidationResult.Error) {
-                binding.emailInnerTextField.error = emailValidation.message
-                return@setOnClickListener
-            }
+                    if (emailValidation is ValidationResult.Error) {
+                        binding.emailInnerTextField.error = emailValidation.message
+                        return@checkWithActivity
+                    }
 
-            if (passwordValidation is ValidationResult.Error) {
-                binding.passwordInnerTextField.error = passwordValidation.message
-                return@setOnClickListener
-            }
+                    if (passwordValidation is ValidationResult.Error) {
+                        binding.passwordInnerTextField.error = passwordValidation.message
+                        return@checkWithActivity
+                    }
 
-            viewModel.onEvent(LoginContract.Event.LoginButtonClicked(email, password))
+                    viewModel.onEvent(LoginContract.Event.LoginButtonClicked(email, password))
+                }
+            )
         }
 
         binding.registrationView.setOnClickListener {
-            viewModel.onEvent(LoginContract.Event.RegistrationClicked)
+            InternetCheckManager.checkWithActivity(
+                context = this,
+                onSuccess = { viewModel.onEvent(LoginContract.Event.RegistrationClicked) }
+            )
         }
 
         binding.forgotPasswordTextView.setOnClickListener {
-            viewModel.onEvent(LoginContract.Event.ForgotPasswordClicked)
+            InternetCheckManager.checkWithActivity(
+                context = this,
+                onSuccess = { viewModel.onEvent(LoginContract.Event.ForgotPasswordClicked) }
+            )
         }
     }
 
@@ -97,7 +113,14 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun navigateToSuccess() {
-        startActivity(Intent(this, SuccessFragment::class.java))
+        setContentView(bindingAlert.root)
+        bindingAlert.successTitle.visibility = View.VISIBLE
+        bindingAlert.successLayout.visibility = View.VISIBLE
+        bindingAlert.buttonNext.visibility = View.VISIBLE
+        bindingAlert.buttonNext.text = getString(R.string.next_button)
+
+        bindingAlert.errorTitle.visibility = View.GONE
+        bindingAlert.errorLayout.visibility = View.GONE
     }
 
     private fun navigateToSplash() {

@@ -7,6 +7,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.drivenextmobile.app.manager.InternetCheckManager
 import com.example.drivenextmobile.databinding.LoadingScreenBinding
 import com.example.drivenextmobile.ui.login.LoginActivity
 import com.example.drivenextmobile.ui.onboarding.OnboardingActivity
@@ -58,10 +59,17 @@ class SplashActivity : AppCompatActivity() {
 
     private fun setupClickListeners() {
         binding.buttonLogin.setOnClickListener {
-            viewModel.onEvent(SplashContract.Event.LoginClicked)
+            InternetCheckManager.checkWithActivity(
+                context = this,
+                onSuccess = { viewModel.onEvent(SplashContract.Event.LoginClicked) }
+            )
         }
+
         binding.buttonRegistration.setOnClickListener {
-            viewModel.onEvent(SplashContract.Event.RegisterClicked)
+            InternetCheckManager.checkWithActivity(
+                context = this,
+                onSuccess = { viewModel.onEvent(SplashContract.Event.RegisterClicked) }
+            )
         }
     }
 

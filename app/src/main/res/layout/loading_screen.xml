@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.MainActivity">
+
+    <!-- Изображение -->
+    <ImageView
+        android:id="@+id/splashImageView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="285dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="250dp"
+        android:contentDescription="@string/loading_title"
+        android:scaleType="fitCenter"
+        android:src="@drawable/loading_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/logoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="@string/loading_title"
+        android:textColor="@color/violet"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="24dp"/>
+
+    <!-- Подзаголовок -->
+    <TextView
+        android:id="@+id/subtitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loading_text"
+        android:textSize="14sp"
+        android:fontFamily="@font/montserrat_regular"
+        android:textColor="@color/black_70_percent"
+        app:layout_constraintTop_toBottomOf="@id/logoTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp" />
+
+    <!-- Кнопка "Войти" -->
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="342dp"
+        android:layout_height="52dp"
+        android:text="@string/loading_enter"
+        android:fontFamily="@font/montserrat_medium"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="160dp"
+        app:backgroundTint="@color/violet"
+        app:cornerRadius="8dp"
+        android:visibility="gone" /> <!-- По умолчанию скрыта -->
+
+    <!-- Кнопка "Регистрация" -->
+    <Button
+        android:id="@+id/button_registration"
+        android:layout_width="342dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/loading_reg"
+        android:textColor="@color/gray"
+        android:fontFamily="@font/montserrat_medium"
+        android:textSize="16sp"
+        app:backgroundTint="@color/white"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_login"
+        app:rippleColor="#E2E1E1"
+        app:strokeColor="#D3D0D0"
+        app:strokeWidth="1dp"
+        android:visibility="gone" /> <!-- По умолчанию скрыта -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

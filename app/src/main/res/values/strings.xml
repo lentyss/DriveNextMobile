@@ -1,0 +1,74 @@
+<resources>
+    <!-- Общее -->
+    <string name="loading_enter">Войти</string>
+    <string name="loading_reg">Зарегистрироваться</string>
+    <string name="login_email_text">Электронная почта</string>
+    <string name="login_email_form">Введите электронную почту</string>
+    <string name="login_pass_form">Введите пароль</string>
+    <string name="next_button">Далее</string>
+    <string name="reg_bday_form">DD/MM/YYYY</string>
+
+    <!-- Экран загрузки -->
+    <string name="app_name">DriveNextMobile</string>
+    <string name="loading_title">DriveNext</string>
+    <string name="loading_text">Поможем найти твою следующую поездку</string>
+
+
+    <!-- Онбординг -->
+    <string name="onboarding_title1">Аренда автомобилей</string>
+    <string name="onboarding_title2">Безопасно и удобно</string>
+    <string name="onboarding_title3">Лучшие предложения</string>
+    <string name="onboarding_first">Открой для себя удобный и доступный способ передвижения</string>
+    <string name="onboarding_second">Арендуй автомобиль и наслаждайся его удобством</string>
+    <string name="onboarding_last">Выбирай понравившиеся среди сотен доступных автомобилей</string>
+    <string name="skip_text">Пропустить</string>
+    <string name="go_button">Поехали</string>
+    <string name="indicator">I</string>
+
+
+    <!-- Экран аутентификации -->
+    <string name="login_title">Войдите в аккаунт</string>
+    <string name="login_subtitle">Пожалуйста, введите свои данные</string>
+    <string name="login_pass_text">Пароль</string>
+    <string name="login_forgot_pass">Забыли пароль?</string>
+    <string name="login_google">Войти через Google</string>
+
+
+    <!-- Экраны регистрации -->
+    <string name="reg_title">Создать аккаунт</string>
+    <string name="reg_pass_text">Придумайте пароль</string>
+    <string name="reg_pass_dub">Повторите пароль</string>
+    <string name="reg_checkbox">Я согласен с условиями обслуживания и политикой конфиденциальности</string>
+    <string name="reg_surname_text">Фамилия</string>
+    <string name="reg_surname_form">Введите фамилию</string>
+    <string name="reg_name_text">Имя</string>
+    <string name="reg_name_form">Введите имя</string>
+    <string name="reg_lastname_text">Отчество</string>
+    <string name="reg_lastname_form">Введите отчество</string>
+    <string name="reg_bday_text">Дата рождения</string>
+    <string name="reg_gender_text">Пол</string>
+    <string name="reg_radio_male">Мужской</string>
+    <string name="reg_radio_female">Женский</string>
+    <string name="reg_photo_text">Добавление фотографии поможет владельцам и арендаторам узнать друг друга, когда они будут забирать машину</string>
+    <string name="reg_drive_num_text">Номер водительского удостоверения</string>
+    <string name="reg_drive_num_form">00 00 000000</string>
+    <string name="reg_drive_date_text">Дата выдачи</string>
+    <string name="reg_drive_photo_text">Загрузите фото водительского удостоверения</string>
+    <string name="reg_photo_form">Загрузить фото</string>
+    <string name="reg_passport_photo_text">Загрузите фото паспорта</string>
+    <string name="photo_selected">Фото загружено</string>
+
+
+    <!-- Экран успешной регистрации -->
+    <string name="success_title">Пользуйтесь с удовольствием</string>
+    <string name="success_subtitle">Поздравляем</string>
+    <string name="success_message">Вы успешно зарегистрировались. Обработка ваших персональных данных займет около двух часов. Спасибо за ожидание.</string>
+
+
+    <!-- Экран ошибки -->
+    <string name="error_title">Ошибка</string>
+    <string name="error_subtitle">Нет подключения к интернету</string>
+    <string name="error_message">Проверьте подключение и повторите попытку</string>
+    <string name="error_button">Повторить попытку</string>
+
+</resources>

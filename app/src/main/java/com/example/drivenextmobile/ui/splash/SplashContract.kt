@@ -1,5 +1,8 @@
 package com.example.drivenextmobile.ui.splash
 
+/**
+    Контракт MVI для Splash-экрана
+ */
 interface SplashContract {
     sealed class Event {
         data object InitialCheckCompleted : Event()

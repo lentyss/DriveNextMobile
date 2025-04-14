@@ -37,6 +37,7 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
+    // Настройка системного UI
     private fun setupSystemUI() {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
             // Для API 30+ используем новый подход с WindowInsetsController
@@ -46,7 +47,7 @@ class SplashActivity : AppCompatActivity() {
                     android.view.WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
             }
         } else {
-            // Для API 28-29 используем старый подход
+            // Для API 28-29 старый подход
             @Suppress("DEPRECATION")
             window.decorView.systemUiVisibility = (
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE or

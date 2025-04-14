@@ -1,5 +1,8 @@
 package com.example.drivenextmobile.ui.login
 
+/**
+    Контракт для MVI
+ */
 interface LoginContract {
     data class State(
         val isLoading: Boolean = false,

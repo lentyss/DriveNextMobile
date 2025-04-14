@@ -15,10 +15,4 @@ class SuccessFragment : Fragment() {
     ): View {
         return inflater.inflate(R.layout.alert_fragment, container, false)
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        // Можно добавить обработчик кнопки "Продолжить"
-    }
 }

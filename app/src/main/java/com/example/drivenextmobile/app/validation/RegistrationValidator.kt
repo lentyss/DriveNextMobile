@@ -4,14 +4,14 @@ import android.net.Uri
 import java.util.Calendar
 import java.util.regex.Pattern
 
-/* Валидация регистрации аккаунта
-*  test@test.ru 1111111A
-*  Тест 01.01.2000
-*  0000000000 01.01.2000
-*  пароль: >= 8 символов, минимум 1 цифра 1 буква
-*  дата рождения/удостоверение: 18 <= && <= 120 лет, корректные даты
-*  номер водительского удостоверения: 10 символов
-*  обязательно все, кроме отчества и фото профиля
+/** Валидация регистрации аккаунта
+test@test.ru 1111111A
+Тест 01.01.2000
+0000000000 01.01.2000
+пароль: >= 8 символов, минимум 1 цифра 1 буква
+дата рождения/удостоверение: 18 <= && <= 120 лет, корректные даты
+номер водительского удостоверения: 10 символов
+обязательно все, кроме отчества и фото профиля
 */
 object RegistrationValidator {
     // Шаг 1
@@ -147,10 +147,6 @@ object RegistrationValidator {
         } catch (e: Exception) {
             ValidationResult.Error("Некорректная дата выдачи. Используйте формат ДД.ММ.ГГГГ")
         }
-    }
-    fun validateProfilePhoto(uri: Uri?): ValidationResult {
-        // Фото профиля необязательно
-        return ValidationResult.Success
     }
 
     fun validateDriverLicensePhoto(uri: Uri?): ValidationResult {

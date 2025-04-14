@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Разрешения -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -26,6 +27,7 @@
         android:theme="@style/Theme.DriveNextMobile"
         tools:targetApi="31">
 
+        <!-- FileProvider для безопасного обмена файлами между приложениями -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -36,8 +38,9 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <!-- Все страницы -->
         <activity android:name=".ui.splash.SplashActivity"
-            android:exported="true">
+            android:exported="true"> <!-- разрешает запуск извне (например, из лаунчера) -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

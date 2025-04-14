@@ -8,6 +8,11 @@ enum class Screen {
     LOGIN, REGISTRATION, SUCCESS
 }
 
+/**
+    Общая ViewModel для навигации:
+    LiveData с текущим экраном
+    Навигация между экранами
+ */
 class SharedViewModel : ViewModel() {
 
     private val _currentScreen = MutableLiveData<Screen>(Screen.LOGIN)

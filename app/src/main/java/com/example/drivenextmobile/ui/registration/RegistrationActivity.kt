@@ -20,14 +20,11 @@ import com.example.drivenextmobile.app.validation.ValidationResult
 import com.example.drivenextmobile.databinding.AlertFragmentBinding
 import com.example.drivenextmobile.databinding.RegistrationScreenBinding
 import com.example.drivenextmobile.ui.splash.SplashActivity
-import com.vicmikhailau.maskededittext.MaskedEditText
 import android.Manifest
-import android.content.ContentValues
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Environment
 import com.example.drivenextmobile.app.manager.InternetCheckManager
-import com.example.drivenextmobile.ui.fragments.SuccessFragment
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -46,6 +43,7 @@ class RegistrationActivity : AppCompatActivity() {
     private var driverLicensePhotoUri: Uri? = null
     private var passportPhotoUri: Uri? = null
 
+    // Определение типа загружаемого фото
     private enum class PhotoType {
         PROFILE, DRIVER_LICENSE, PASSPORT
     }
@@ -151,15 +149,6 @@ class RegistrationActivity : AppCompatActivity() {
 
         setupImageViews()
 
-        val licenseInput = binding.licenseInput
-        val licenseNumber = licenseInput.unMaskedText
-
-        val birthdayInput = binding.BirthdayInput
-        val birthdayNumber = birthdayInput.unMaskedText
-
-        val datingInput = binding.datingInput
-        val datingNumber = datingInput.unMaskedText
-
         viewModel = ViewModelProvider(this)[RegistrationViewModel::class.java]
 
         viewModel.success.observe(this) { success ->
@@ -217,6 +206,7 @@ class RegistrationActivity : AppCompatActivity() {
         binding.passportPhotoIcon.scaleType = ImageView.ScaleType.CENTER_CROP
     }
 
+    // Обработка кликов по фото
     private fun setupPhotoClickListeners() {
         binding.partOfProfilePhoto.setOnClickListener {
             currentPhotoType = PhotoType.PROFILE
@@ -234,6 +224,7 @@ class RegistrationActivity : AppCompatActivity() {
         }
     }
 
+    // Диалог выбора источника фото
     private fun showImagePickerDialog() {
         val options = arrayOf("Камера", "Галерея")
         AlertDialog.Builder(this)
@@ -247,6 +238,7 @@ class RegistrationActivity : AppCompatActivity() {
             .show()
     }
 
+    // Запрос разрешений и открытие галереи
     private fun openGallery() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (checkSelfPermission(Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_GRANTED) {
@@ -268,6 +260,7 @@ class RegistrationActivity : AppCompatActivity() {
         galleryLauncher.launch(intent)
     }
 
+    // Запрос разрешений и открытие камеры
     private fun openCamera() {
         if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             launchCameraIntent()
@@ -406,6 +399,7 @@ class RegistrationActivity : AppCompatActivity() {
         }
     }
 
+    // Сохранение фото в память устройства
     private fun savePhotosToInternalStorage() {
         try {
             val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
@@ -464,16 +458,6 @@ class RegistrationActivity : AppCompatActivity() {
 
         bindingAlert.errorTitle.visibility = View.GONE
         bindingAlert.errorLayout.visibility = View.GONE
-    }
-
-    private fun showError() {
-        bindingAlert.errorTitle.visibility = View.VISIBLE
-        bindingAlert.errorLayout.visibility = View.VISIBLE
-        binding.buttonNext.visibility = View.VISIBLE
-        binding.buttonNext.text = getString(R.string.error_button)
-
-        bindingAlert.successTitle.visibility = View.GONE
-        bindingAlert.successLayout.visibility = View.GONE
     }
 
     override fun onBackPressed() {

@@ -9,7 +9,9 @@ interface UserRepository {
     suspend fun findUserByLicense(license: String): User?
     suspend fun registerUser(user: User): Boolean
 }
-
+/**
+    Реализация UserRepository (CRUD)
+**/
 class UserRepositoryImpl(private val supabase: Supabase) : UserRepository {
     override suspend fun findUserByEmail(email: String): User? {
         return try {

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.example.drivenextmobile.R
 import com.example.drivenextmobile.databinding.RegistrationScreenBinding
 import com.example.drivenextmobile.ui.Screen
 import com.example.drivenextmobile.ui.SharedViewModel
@@ -33,6 +32,7 @@ class RegistrationFragment : Fragment() {
         }
     }
 
+    // Очистка binding
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

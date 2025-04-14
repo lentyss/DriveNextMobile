@@ -18,9 +18,9 @@ import com.example.drivenextmobile.databinding.AlertFragmentBinding
 import com.example.drivenextmobile.databinding.AuthScreenBinding
 import com.example.drivenextmobile.ui.MainActivity
 import com.example.drivenextmobile.ui.registration.RegistrationActivity
-import com.example.drivenextmobile.ui.fragments.SuccessFragment
 import com.example.drivenextmobile.ui.splash.SplashActivity
 import kotlinx.coroutines.launch
+
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: AuthScreenBinding
@@ -63,14 +63,12 @@ class LoginActivity : AppCompatActivity() {
                 }
             )
         }
-
         binding.registrationView.setOnClickListener {
             InternetCheckManager.checkWithActivity(
                 context = this,
                 onSuccess = { viewModel.onEvent(LoginContract.Event.RegistrationClicked) }
             )
         }
-
         binding.forgotPasswordTextView.setOnClickListener {
             InternetCheckManager.checkWithActivity(
                 context = this,

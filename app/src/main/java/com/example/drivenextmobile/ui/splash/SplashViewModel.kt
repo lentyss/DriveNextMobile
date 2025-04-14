@@ -20,6 +20,7 @@ class SplashViewModel : ViewModel() {
         }
     }
 
+    // Начальная проверка с задержкой
     private fun checkInitialState() {
         viewModelScope.launch {
             delay(1500)

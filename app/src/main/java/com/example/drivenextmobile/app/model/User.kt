@@ -3,6 +3,7 @@ package com.example.drivenextmobile.app.model
 import kotlinx.serialization.Serializable
 import kotlinx.datetime.Instant
 
+
 @Serializable
 data class User(
     val id: Int? = null,

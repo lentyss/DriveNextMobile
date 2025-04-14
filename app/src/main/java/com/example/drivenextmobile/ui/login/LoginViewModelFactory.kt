@@ -2,9 +2,11 @@ package com.example.drivenextmobile.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.drivenextmobile.app.repository.UserRepositoryImpl
 import com.example.drivenextmobile.app.usecase.LoginUseCase
 
+/**
+    Создание ViewModel с зависимостями
+ */
 class LoginViewModelFactory(
     private val loginUseCase: LoginUseCase
 ) : ViewModelProvider.Factory {

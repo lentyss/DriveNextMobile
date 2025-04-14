@@ -7,6 +7,9 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 
+/**
+    Базовый класс ViewModel для MVI
+ */
 abstract class BaseViewModel<Event, State, Effect> : ViewModel() {
     private val initialState: State by lazy { createInitialState() }
 

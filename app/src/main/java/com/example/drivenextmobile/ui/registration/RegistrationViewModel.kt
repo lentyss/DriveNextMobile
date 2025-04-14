@@ -25,9 +25,6 @@ class RegistrationViewModel(
     private val _success = MutableLiveData<Boolean>()
     val success: LiveData<Boolean> = _success
 
-    private val _photosValid = MutableLiveData<Boolean>()
-    val photosValid: LiveData<Boolean> = _photosValid
-
     // Данные пользователя
     val email = MutableLiveData<String>()
     val password = MutableLiveData<String>()
@@ -39,13 +36,8 @@ class RegistrationViewModel(
     val licenseNumber = MutableLiveData<String>()
     val licenseIssueDate = MutableLiveData<String>()
 
-    fun validatePhotos(driverLicenseUri: Uri?, passportUri: Uri?) {
-        val driverLicenseValid = driverLicenseUri != null
-        val passportValid = passportUri != null
 
-        _photosValid.value = driverLicenseValid && passportValid
-    }
-
+    // Отправка данных на сервер
     fun completeRegistration() {
         viewModelScope.launch {
             // Проверка email

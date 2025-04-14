@@ -3,14 +3,15 @@ package com.example.drivenextmobile.app.usecase
 import at.favre.lib.crypto.bcrypt.BCrypt
 import com.example.drivenextmobile.app.repository.UserRepository
 
-class LoginUseCase(
-    private val userRepository: UserRepository
-) {
-    sealed class LoginResult {
+class LoginUseCase(private val userRepository: UserRepository)
+{
+    sealed class LoginResult
+    {
         data object Success : LoginResult()
         data class Error(val message: String) : LoginResult()
     }
 
+    // Асинхронная функция входа
     suspend fun execute(email: String, password: String): LoginResult {
         return try {
             val user = userRepository.findUserByEmail(email) ?:

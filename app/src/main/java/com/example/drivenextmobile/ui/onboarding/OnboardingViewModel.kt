@@ -69,7 +69,7 @@ class OnboardingViewModel : ViewModel() {
             isLastPage = page == pages.size - 1
         )
     }
-
+    // Хранение данных страницы
     private data class Page(
         val imageRes: Int,
         val progressRes: Int,

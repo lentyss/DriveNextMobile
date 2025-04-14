@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = MainScreenBinding.inflate(layoutInflater)
         setContentView(R.layout.main_screen)
+        // перезапуск-Todo
         startActivity(intent)
         finish()
     }

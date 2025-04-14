@@ -1,8 +1,8 @@
 package com.example.drivenextmobile.app.validation
 
-/* Валидация входа в аккаунт
-*  test@test.ru 1111111A
-*  пароль: не меньше 8 символов, минимум 1 цифра 1 буква
+/** Валидация входа в аккаунт
+test@test.ru 1111111A
+пароль: не меньше 8 символов, минимум 1 цифра 1 буква
 */
 object AuthValidator {
     fun validateEmail(email: String): ValidationResult {

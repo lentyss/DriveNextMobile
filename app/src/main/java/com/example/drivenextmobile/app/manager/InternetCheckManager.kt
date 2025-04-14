@@ -9,6 +9,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+    Менеджер проверки интернет-соединения
+ */
 object InternetCheckManager {
 
     fun hasInternetConnection(context: Context): Boolean {
@@ -27,9 +30,11 @@ object InternetCheckManager {
         context: Context,
         onSuccess: () -> Unit
     ) {
+        // Запуск корутины в фоновом потоке
         CoroutineScope(Dispatchers.IO).launch {
             val hasInternet = hasInternetConnection(context)
 
+            // главный поток
             CoroutineScope(Dispatchers.Main).launch {
                 if (hasInternet) {
                     onSuccess()

@@ -5,9 +5,8 @@ import com.example.drivenextmobile.app.usecase.LoginUseCase
 import com.example.drivenextmobile.ui.BaseViewModel
 import kotlinx.coroutines.launch
 
-class LoginViewModel(
-    private val loginUseCase: LoginUseCase
-) : BaseViewModel<LoginContract.Event, LoginContract.State, LoginContract.Effect>() {
+class LoginViewModel(private val loginUseCase: LoginUseCase) :
+    BaseViewModel<LoginContract.Event, LoginContract.State, LoginContract.Effect>() {
 
     override fun createInitialState(): LoginContract.State = LoginContract.State()
 
@@ -19,7 +18,7 @@ class LoginViewModel(
             LoginContract.Event.BackPressed -> handleBackPressed()
         }
     }
-
+    // Основная логика входа
     private fun login(email: String, password: String) {
         viewModelScope.launch {
             setState { copy(isLoading = true) }
@@ -40,12 +39,6 @@ class LoginViewModel(
     private fun navigateToRegistration() {
         viewModelScope.launch {
             setEffect { LoginContract.Effect.NavigateToRegistration }
-        }
-    }
-
-    private fun navigateToSuccess() {
-        viewModelScope.launch {
-            setEffect { LoginContract.Effect.NavigateToSuccess }
         }
     }
 

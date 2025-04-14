@@ -7,6 +7,7 @@ import com.example.drivenextmobile.R
 import com.example.drivenextmobile.app.manager.InternetCheckManager
 import com.example.drivenextmobile.databinding.AlertFragmentBinding
 
+
 class NoInternetActivity : AppCompatActivity() {
     private lateinit var binding: AlertFragmentBinding
 
@@ -19,9 +20,7 @@ class NoInternetActivity : AppCompatActivity() {
     }
 
     private fun setupViews() {
-        // Настройка элементов интерфейса
         setContentView(binding.root)
-
         binding.errorLayout.visibility = View.VISIBLE
         binding.errorTitle.visibility = View.VISIBLE
         binding.buttonNext.visibility = View.VISIBLE
@@ -35,21 +34,6 @@ class NoInternetActivity : AppCompatActivity() {
             if (InternetCheckManager.hasInternetConnection(this)) {
                 finish()
             }
-        }
-    }
-
-    private fun setupClickListeners() {
-        binding.buttonNext.setOnClickListener {
-            // Проверяем соединение и закрываем Activity, если интернет есть
-            checkInternetAndFinish()
-        }
-    }
-
-    private fun checkInternetAndFinish() {
-        if (InternetCheckManager.hasInternetConnection(this)) {
-            finish()
-        } else {
-            // Можно показать Toast или анимировать кнопку
         }
     }
 }
